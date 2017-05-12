@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Edit and Run CLang C++ code on Ubuntu Linux in Windows 10</title>
-  <meta name="description" content="Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.">
+  <meta name="description" content="Welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration - without using a Linux partition or Docker.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="http://localhost:4000/c++/2017/05/12/cpp-in-win10.html">
@@ -77,7 +77,7 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.</p>
+    <p>Welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration - without using a Linux partition or Docker.</p>
 
 <p>To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu”, also known as “Windows Subsystem for Linux” (WSL) provided by Windows 10.</p>
 
@@ -109,7 +109,7 @@
 
 <p><img src="http://localhost:4000/assets/HelpFile.jpg" alt="CLang Help" /></p>
 
-<p>Now we can edit our first program in C++. We can just use our preferred editor, save to WSL user directory, and then compile using the Command Line.</p>
+<p>Now we can edit our first program in C++. We will just use our preferred editor on Windows and then compile using the WSL Command Line tool.</p>
 
 <p>Let’s try with a simple C++11 source code that computes the number of uppercase letters in a string:</p>
 
@@ -150,29 +150,29 @@
 <span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>(you can find other examples in my <a href="https://github.com/guildenstern70/cpp11learn">cpp11learn</a> project on GitHub.)</p>
+<p>(you can find other C++11 examples in my <a href="https://github.com/guildenstern70/cpp11learn">cpp11learn</a> project on GitHub.)</p>
 
 <p>Open your favourite editor, I like <a href="https://code.visualstudio.com/">Visual Studio Code</a> so I’m using that. Copy and paste the code above, as shown below:</p>
 
 <p><img src="http://localhost:4000/assets/VSCodeCpp.jpg" alt="Editing in Visual Studio Code" /></p>
 
-<p>There is a big problem, now. WSL is not built to allow interoperability with Windows. This means that even if you save your code into the WSL User Home directory, which is located here:</p>
+<p>There is a big problem, now. <em>WSL is not built to allow interoperability with Windows</em>. This means that even if you save your code into the WSL User Home directory, which is located here:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">C:<span class="se">\U</span>sers<span class="se">\[</span>your username]<span class="se">\A</span>ppData<span class="se">\L</span>ocal<span class="se">\l</span>xss<span class="se">\h</span>ome<span class="se">\[</span>username]</code></pre></figure>
+<figure class="highlight"><pre><code class="language-msdos" data-lang="msdos">C:\Users\[your username]\AppData\Local\lxss\home\[username]</code></pre></figure>
 
-<p>you will not be able to see it in WSL (try it! Note that /lxss/ is a hidden directory.)</p>
+<p>you will not be able to see it in WSL (try it! Note that /lxss/ is a system, hidden directory.)</p>
 
-<p>You can use the Powershell the get to the directory:</p>
+<p>You can use the Powershell the get to view the directory contents</p>
 
 <p><img src="http://localhost:4000/assets/BAUDir.jpg" alt="Powershell Dir in WSL" /></p>
 
-<p>but any modification made by Windows inside that directory will not be available in WSL. (<a href="https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/">Here</a> you will find an interesting article that explain everything about it.)</p>
+<p>but any modification made by Windows inside that directory will not be available in WSL. (<a href="https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/">Here</a> you will find an interesting article that explains everything about it.)</p>
 
 <p>So, how can we solve the issue? The trick is to use a Windows folder to make the editing, and then mount this folder in WSL.</p>
 
 <p>First of all, we create a new folder using Powershell, for instance:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir C:<span class="se">\t</span>emp<span class="se">\c</span>ppcode<span class="se">\u</span>ppercase</code></pre></figure>
+<figure class="highlight"><pre><code class="language-msdos" data-lang="msdos">mkdir C:\temp\cppcode\uppercase</code></pre></figure>
 
 <p>and then save our code with Visual Studio Code as:</p>
 
