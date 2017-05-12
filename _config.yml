@@ -13,16 +13,17 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: The Coder Frog
+title: Alessio Saltarin - The Guildenstern Studio
 email: alessiosaltarin@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   I gather here all my experiments with computer programming languages
   and codes. You will find most of all Ruby, C++, Scala, Kotlin and Go examples.
   All of the code found here is licensed with MIT license.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://guildenstern70.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: alessiosaltarin
 github_username:  guildenstern70
+exclude: [".gitignore", "README.md", "Gemfile", "Gemfile.lock"]
 
 # Build settings
 markdown: kramdown
