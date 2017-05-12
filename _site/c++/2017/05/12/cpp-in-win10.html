@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Edit and Run CLang C++ code on Ubuntu Bash in Windows 10</title>
+  <title>Edit and Run CLang C++ code on Ubuntu Linux in Windows 10</title>
   <meta name="description" content="Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -67,7 +67,7 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Edit and Run CLang C++ code on Ubuntu Bash in Windows 10</h1>
+    <h1 class="post-title" itemprop="name headline">Edit and Run CLang C++ code on Ubuntu Linux in Windows 10</h1>
     <p class="post-meta">
       <time datetime="2017-05-12T14:40:17+02:00" itemprop="datePublished">
         
@@ -79,15 +79,15 @@
   <div class="post-content" itemprop="articleBody">
     <p>Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.</p>
 
-<p>To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu” (BAU) provided by Windows 10.</p>
+<p>To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu”, also known as “Windows Subsystem for Linux” (WSL) provided by Windows 10.</p>
 
-<p>To setup BAU you can follow these instructions from Microsoft site:</p>
+<p>To setup WSL you can follow these instructions from Microsoft site:</p>
 
 <p><a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">https://msdn.microsoft.com/en-us/commandline/wsl</a></p>
 
-<p>BAU installed? Can you open your newly installed Ubuntu terminal? Very well, let’s go on.</p>
+<p>WSL installed? Can you open your newly installed Ubuntu terminal? Very well, let’s go on.</p>
 
-<p>First of all we need to install CLang onto BAU. To know what “clang” packages are available in BAU, we can just type:</p>
+<p>First of all we need to install CLang onto WSL. To know what “clang” packages are available in WSL, we can just type:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>clang</code></pre></figure>
 
@@ -109,7 +109,7 @@
 
 <p><img src="http://localhost:4000/assets/HelpFile.jpg" alt="CLang Help" /></p>
 
-<p>Now we can edit our first program in C++. We can just use our preferred editor, save to BAU user directory, and then compile using the Command Line.</p>
+<p>Now we can edit our first program in C++. We can just use our preferred editor, save to WSL user directory, and then compile using the Command Line.</p>
 
 <p>Let’s try with a simple C++11 source code that computes the number of uppercase letters in a string:</p>
 
@@ -136,7 +136,7 @@
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="kt">char</span> <span class="n">example</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"Hello BAU World!"</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">example</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"Hello WSL World!"</span><span class="p">;</span>
 
     <span class="kt">int</span> <span class="n">nr_ucase</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="n">for_each</span><span class="p">(</span> <span class="n">example</span><span class="p">,</span> <span class="n">example</span><span class="o">+</span><span class="k">sizeof</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">nr_ucase</span><span class="p">](</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span>
@@ -152,7 +152,50 @@
 
 <p>(you can find other examples in my <a href="https://github.com/guildenstern70/cpp11learn">cpp11learn</a> project on GitHub.)</p>
 
-<p>Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<p>Open your favourite editor, I like <a href="https://code.visualstudio.com/">Visual Studio Code</a> so I’m using that. Copy and paste the code above, as shown below:</p>
+
+<p><img src="http://localhost:4000/assets/VSCodeCpp.jpg" alt="Editing in Visual Studio Code" /></p>
+
+<p>There is a big problem, now. WSL is not built to allow interoperability with Windows. This means that even if you save your code into the WSL User Home directory, which is located here:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">C:<span class="se">\U</span>sers<span class="se">\[</span>your username]<span class="se">\A</span>ppData<span class="se">\L</span>ocal<span class="se">\l</span>xss<span class="se">\h</span>ome<span class="se">\[</span>username]</code></pre></figure>
+
+<p>you will not be able to see it in WSL (try it! Note that /lxss/ is a hidden directory.)</p>
+
+<p>You can use the Powershell the get to the directory:</p>
+
+<p><img src="http://localhost:4000/assets/BAUDir.jpg" alt="Powershell Dir in WSL" /></p>
+
+<p>but any modification made by Windows inside that directory will not be available in WSL. (<a href="https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/">Here</a> you will find an interesting article that explain everything about it.)</p>
+
+<p>So, how can we solve the issue? The trick is to use a Windows folder to make the editing, and then mount this folder in WSL.</p>
+
+<p>First of all, we create a new folder using Powershell, for instance:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir C:<span class="se">\t</span>emp<span class="se">\c</span>ppcode<span class="se">\u</span>ppercase</code></pre></figure>
+
+<p>and then save our code with Visual Studio Code as:</p>
+
+<figure class="highlight"><pre><code class="language-msdos" data-lang="msdos">C:\temp\cppcode\uppercase\main.cpp</code></pre></figure>
+
+<p>Any Windows directory is mounted by default in WSL:</p>
+
+<figure class="highlight"><pre><code class="language-msdos" data-lang="msdos">C:\ -&gt; /mnt/c
+D:\ -&gt; /mnt/d
+...</code></pre></figure>
+
+<p>so we will find our file in WSL:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ls -al /mnt/c/Temp/cppcode/uppercase/main.cpp</code></pre></figure>
+
+<p>We are finally ready to use our CLang compiler. Of course, in a real world project we will setup a CMake script in order to compile and link our source file(s), but for this small example it will be sufficient to launch:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /mnt/c/Temp/cppcode/uppercase/
+clang++-3.5 main.cpp -o uppercase -std<span class="o">=</span>c++11</code></pre></figure>
+
+<p>and finally run the executable with</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">./uppercase</code></pre></figure>
 
 
   </div>

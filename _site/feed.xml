@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-12T15:21:37+02:00</updated><id>http://localhost:4000/</id><title type="html">The Coder Frog</title><subtitle>I gather here all my experiments with computer programming languages and codes. You will find most of all Ruby, C++, Scala, Kotlin and Go examples. All of the code found here is licensed with MIT license.
-</subtitle><entry><title type="html">Edit and Run CLang C++ code on Ubuntu Bash in Windows 10</title><link href="http://localhost:4000/c++/2017/05/12/cpp-in-win10.html" rel="alternate" type="text/html" title="Edit and Run CLang C++ code on Ubuntu Bash in Windows 10" /><published>2017-05-12T14:40:17+02:00</published><updated>2017-05-12T14:40:17+02:00</updated><id>http://localhost:4000/c++/2017/05/12/cpp-in-win10</id><content type="html" xml:base="http://localhost:4000/c++/2017/05/12/cpp-in-win10.html">&lt;p&gt;Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-12T16:46:51+02:00</updated><id>http://localhost:4000/</id><title type="html">The Coder Frog</title><subtitle>I gather here all my experiments with computer programming languages and codes. You will find most of all Ruby, C++, Scala, Kotlin and Go examples. All of the code found here is licensed with MIT license.
+</subtitle><entry><title type="html">Edit and Run CLang C++ code on Ubuntu Linux in Windows 10</title><link href="http://localhost:4000/c++/2017/05/12/cpp-in-win10.html" rel="alternate" type="text/html" title="Edit and Run CLang C++ code on Ubuntu Linux in Windows 10" /><published>2017-05-12T14:40:17+02:00</published><updated>2017-05-12T14:40:17+02:00</updated><id>http://localhost:4000/c++/2017/05/12/cpp-in-win10</id><content type="html" xml:base="http://localhost:4000/c++/2017/05/12/cpp-in-win10.html">&lt;p&gt;Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.&lt;/p&gt;
 
-&lt;p&gt;To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu” (BAU) provided by Windows 10.&lt;/p&gt;
+&lt;p&gt;To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu”, also known as “Windows Subsystem for Linux” (WSL) provided by Windows 10.&lt;/p&gt;
 
-&lt;p&gt;To setup BAU you can follow these instructions from Microsoft site:&lt;/p&gt;
+&lt;p&gt;To setup WSL you can follow these instructions from Microsoft site:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://msdn.microsoft.com/en-us/commandline/wsl/about&quot;&gt;https://msdn.microsoft.com/en-us/commandline/wsl&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;BAU installed? Can you open your newly installed Ubuntu terminal? Very well, let’s go on.&lt;/p&gt;
+&lt;p&gt;WSL installed? Can you open your newly installed Ubuntu terminal? Very well, let’s go on.&lt;/p&gt;
 
-&lt;p&gt;First of all we need to install CLang onto BAU. To know what “clang” packages are available in BAU, we can just type:&lt;/p&gt;
+&lt;p&gt;First of all we need to install CLang onto WSL. To know what “clang” packages are available in WSL, we can just type:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;clang&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -31,7 +31,7 @@
 
 &lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/HelpFile.jpg&quot; alt=&quot;CLang Help&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Now we can edit our first program in C++. We can just use our preferred editor, save to BAU user directory, and then compile using the Command Line.&lt;/p&gt;
+&lt;p&gt;Now we can edit our first program in C++. We can just use our preferred editor, save to WSL user directory, and then compile using the Command Line.&lt;/p&gt;
 
 &lt;p&gt;Let’s try with a simple C++11 source code that computes the number of uppercase letters in a string:&lt;/p&gt;
 
@@ -58,7 +58,7 @@
 
 &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello BAU World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello WSL World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nr_ucase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;for_each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nr_ucase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -74,4 +74,47 @@
 
 &lt;p&gt;(you can find other examples in my &lt;a href=&quot;https://github.com/guildenstern70/cpp11learn&quot;&gt;cpp11learn&lt;/a&gt; project on GitHub.)&lt;/p&gt;
 
-&lt;p&gt;Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.</summary></entry></feed>
+&lt;p&gt;Open your favourite editor, I like &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; so I’m using that. Copy and paste the code above, as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/VSCodeCpp.jpg&quot; alt=&quot;Editing in Visual Studio Code&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There is a big problem, now. WSL is not built to allow interoperability with Windows. This means that even if you save your code into the WSL User Home directory, which is located here:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;C:&lt;span class=&quot;se&quot;&gt;\U&lt;/span&gt;sers&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;your username]&lt;span class=&quot;se&quot;&gt;\A&lt;/span&gt;ppData&lt;span class=&quot;se&quot;&gt;\L&lt;/span&gt;ocal&lt;span class=&quot;se&quot;&gt;\l&lt;/span&gt;xss&lt;span class=&quot;se&quot;&gt;\h&lt;/span&gt;ome&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;username]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;you will not be able to see it in WSL (try it! Note that /lxss/ is a hidden directory.)&lt;/p&gt;
+
+&lt;p&gt;You can use the Powershell the get to the directory:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/BAUDir.jpg&quot; alt=&quot;Powershell Dir in WSL&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;but any modification made by Windows inside that directory will not be available in WSL. (&lt;a href=&quot;https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/&quot;&gt;Here&lt;/a&gt; you will find an interesting article that explain everything about it.)&lt;/p&gt;
+
+&lt;p&gt;So, how can we solve the issue? The trick is to use a Windows folder to make the editing, and then mount this folder in WSL.&lt;/p&gt;
+
+&lt;p&gt;First of all, we create a new folder using Powershell, for instance:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkdir C:&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;emp&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;ppcode&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;ppercase&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and then save our code with Visual Studio Code as:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-msdos&quot; data-lang=&quot;msdos&quot;&gt;C:\temp\cppcode\uppercase\main.cpp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Any Windows directory is mounted by default in WSL:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-msdos&quot; data-lang=&quot;msdos&quot;&gt;C:\ -&amp;gt; /mnt/c
+D:\ -&amp;gt; /mnt/d
+...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;so we will find our file in WSL:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ls -al /mnt/c/Temp/cppcode/uppercase/main.cpp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We are finally ready to use our CLang compiler. Of course, in a real world project we will setup a CMake script in order to compile and link our source file(s), but for this small example it will be sufficient to launch:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /mnt/c/Temp/cppcode/uppercase/
+clang++-3.5 main.cpp -o uppercase -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;c++11&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and finally run the executable with&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;./uppercase&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Hi everybody and welcome to my new post about compiling C++ code in Windows 10 using a standard Linux configuration.</summary></entry></feed>
