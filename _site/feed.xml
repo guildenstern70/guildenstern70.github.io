@@ -1,9 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-12T17:10:03+02:00</updated><id>http://localhost:4000/</id><title type="html">Alessio Saltarin - The Guildenstern Studio</title><subtitle>I gather here all my experiments with computer programming languages and codes. You will find most of all Ruby, C++, Scala, Kotlin and Go examples. All of the code found here is licensed with MIT license.
-</subtitle><entry><title type="html">Edit and Run C++ code on WSL in Windows 10 using CLang</title><link href="http://localhost:4000/cpp/2017/05/12/cpp-in-win10.html" rel="alternate" type="text/html" title="Edit and Run C++ code on WSL in Windows 10 using CLang" /><published>2017-05-12T14:40:17+02:00</published><updated>2017-05-12T14:40:17+02:00</updated><id>http://localhost:4000/cpp/2017/05/12/cpp-in-win10</id><content type="html" xml:base="http://localhost:4000/cpp/2017/05/12/cpp-in-win10.html">&lt;p&gt;Since the appearance of “Bash on Ubuntu” on Windows 10, I wondered if it was possible to compile C++ code in Windows 10 using a standard Linux configuration - but without using a Linux partition or Docker.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-17T10:26:06+02:00</updated><id>http://localhost:4000/</id><title type="html">Alessio Saltarin - The Guildenstern Studio</title><subtitle>I gather here all my experiments with computer programming languages and codes. You will find most of all Ruby, Java, C++, Scala, Kotlin and Go examples. All of the code found here is licensed with MIT license.
+</subtitle><entry><title type="html">How to update your JDK collection on MacOSX</title><link href="http://localhost:4000/java/2017/05/16/update-jdk-macosx.html" rel="alternate" type="text/html" title="How to update your JDK collection on MacOSX" /><published>2017-05-16T10:40:17+02:00</published><updated>2017-05-16T10:40:17+02:00</updated><id>http://localhost:4000/java/2017/05/16/update-jdk-macosx</id><content type="html" xml:base="http://localhost:4000/java/2017/05/16/update-jdk-macosx.html">&lt;p&gt;A Java developer usually maintains on his machine a collection of different versions of &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot;&gt;Java JDK&lt;/a&gt;s to compile and test his applications.&lt;/p&gt;
+
+&lt;p&gt;After some time we discover that we want to remove obsolete JDKs after having added other versions.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, on MacOSX there is no an easy way to do that.&lt;/p&gt;
+
+&lt;p&gt;So these are the steps to perform a &lt;strong&gt;clean&lt;/strong&gt; removal of an existing JDK.&lt;/p&gt;
+
+&lt;p&gt;First of all we would like to know how many JDKs are installed on our machine. To do that we open a terminal and type:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pkgutil --pkgs|grep com.oracle&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;on my machine, as an example, I get:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-msdos&quot; data-lang=&quot;msdos&quot;&gt;com.oracle.jdk7u79
+com.oracle.jdk8u112
+com.oracle.jdk8u31
+com.oracle.jdk8u65
+com.oracle.jdk8u77
+com.oracle.jre&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Let’s remove version 77 of JDK 8. First of all we need to know where the JDK files are located. To obtain this info:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pkgutil --info com.oracle.jdk8u77&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I get:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-msdos&quot; data-lang=&quot;msdos&quot;&gt;package-id: com.oracle.jdk8u77
+version: 1.1
+volume: /
+location: Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk
+install-time: 1459414940&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Very well, now we know that we must remove all files under&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and we do that with root permissions:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo rm -R /Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ok, now we must only remember to delete the package information:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo pkgutil --forget com.oracle.jdk8u77&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To confirm that we effectively delete the package, we can re-issue&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pkgutil --pkgs|grep com.oracle&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finally, to add another JDK, it is sufficient to download the image from OpenJDK or &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot;&gt;Oracle&lt;/a&gt; site, and install it like any other MacOSX package.&lt;/p&gt;
+
+&lt;p&gt;(A small Gist with all the needed commands is available &lt;a href=&quot;https://gist.github.com/guildenstern70/8730c4baae9b3b671f3d3712c86cf2a6&quot;&gt;here&lt;/a&gt;)&lt;/p&gt;</content><author><name></name></author><summary type="html">A Java developer usually maintains on his machine a collection of different versions of Java JDKs to compile and test his applications.</summary></entry><entry><title type="html">Edit and Run C++ code on WSL in Windows 10 using CLang</title><link href="http://localhost:4000/cpp/2017/05/12/cpp-in-win10.html" rel="alternate" type="text/html" title="Edit and Run C++ code on WSL in Windows 10 using CLang" /><published>2017-05-12T14:40:17+02:00</published><updated>2017-05-12T14:40:17+02:00</updated><id>http://localhost:4000/cpp/2017/05/12/cpp-in-win10</id><content type="html" xml:base="http://localhost:4000/cpp/2017/05/12/cpp-in-win10.html">&lt;p&gt;Since the appearance of &lt;code class=&quot;highlighter-rouge&quot;&gt;Bash on Ubuntu&lt;/code&gt; on Windows 10, I wondered if it was possible to compile C++ code in Windows 10 using a standard Linux configuration - but without using a Linux partition or Docker.&lt;/p&gt;
 
 &lt;p&gt;It’s a bit tricky, but it’s possible.&lt;/p&gt;
 
-&lt;p&gt;To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using “Bash on Ubuntu”, also known as “Windows Subsystem for Linux” (WSL) provided by Windows 10.&lt;/p&gt;
+&lt;p&gt;To begin with, we setup a Windows 10 machine to compile and execute Linux C++ code compiled with CLang using &lt;code class=&quot;highlighter-rouge&quot;&gt;Bash on Ubuntu&lt;/code&gt;, also known as &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows Subsystem for Linux&lt;/code&gt; (WSL) provided by Windows 10.&lt;/p&gt;
 
 &lt;p&gt;To setup WSL you can follow these instructions from Microsoft site:&lt;/p&gt;
 
@@ -119,4 +170,4 @@ clang++-3.5 main.cpp -o uppercase -std&lt;span class=&quot;o&quot;&gt;=&lt;/span
 
 &lt;p&gt;and finally run the executable with&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;./uppercase&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Since the appearance of “Bash on Ubuntu” on Windows 10, I wondered if it was possible to compile C++ code in Windows 10 using a standard Linux configuration - but without using a Linux partition or Docker.</summary></entry></feed>
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;./uppercase&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Since the appearance of Bash on Ubuntu on Windows 10, I wondered if it was possible to compile C++ code in Windows 10 using a standard Linux configuration - but without using a Linux partition or Docker.</summary></entry></feed>
