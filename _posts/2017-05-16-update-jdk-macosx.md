@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "How to update your JDK collection on MacOSX"
+title:  "How to remove obsolete JDKs on MacOSX"
 date:   2017-05-16 10:40:17 +0200
 categories: java
 ---
+
 A Java developer usually maintains on his machine a collection of different versions of [Java JDK]s to compile and test his applications.
 
 After some time we discover that we want to remove obsolete JDKs after having added other versions.
