@@ -105,10 +105,10 @@ open class Role : Serializable
 Notice how we modified the many-to-many attribute "permissions":
 
 We defined that:
-a. the JOIN operation is of type MERGE. We want that if the source entity is merged, 
++ the JOIN operation is of type MERGE. We want that if the source entity is merged, 
 the merge is cascaded to the target of the association.
-b. when a row is called, all of its permissions are retrieved immediately (fetch EAGER)
-c. the junction table is called "Role_Permissions" and it will be constituted by
++ when a row is called, all of its permissions are retrieved immediately (fetch EAGER)
++ the junction table is called "Role_Permissions" and it will be constituted by
 a column with the ID of Role and a column with the ID of Permission.
 
 Now we can create some Role with Permissions. Given that we already have a Permission table
