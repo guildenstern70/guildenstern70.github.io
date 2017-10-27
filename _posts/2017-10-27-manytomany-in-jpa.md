@@ -136,6 +136,7 @@ for (String role : roles)
 }
 {% endhighlight %}
 
+where "roles" object is the Spring Data [DAO] object that manages CRUD operations on the "Role" table.
 
 
 
@@ -146,3 +147,4 @@ for (String role : roles)
 [Hibernate]: http://hibernate.org/
 [Object-to-Relational-Mapper]: https://en.wikipedia.org/wiki/Object-relational_mapping
 [Kotlin]: https://kotlinlang.org/
+[DAO]: https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/dao.html
